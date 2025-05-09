@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .header-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    textarea, input[type="text"], input[type="date"], select {
+      width: 98%;
+      padding: 10px;
+      border: 1px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      resize: vertical;
+      font-size: 16px;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    button {
+      background-color: #fff;
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <img class="header-image" src="https://williamagence.com/wp-content/uploads/2025/05/2.png" alt="Imagem de cabeçalho" />
+
+    <form id="videoForm" onsubmit="enviarFormulario(); return false;">
+      <label for="profissao">Qual sua profissão?</label>
+      <input type="text" id="profissao" name="profissao" />
+
+      <label for="tipoVideo">Qual o tipo de vídeo que você deseja editar? (ex: reels, institucional, vlog...)</label>
+      <textarea id="tipoVideo" name="tipoVideo" rows="2"></textarea>
+
+      <label for="duracao">Qual a duração aproximada do vídeo bruto?</label>
+      <input type="text" id="duracao" name="duracao"/>
+
+      <label for="referencia">Você tem alguma referência de estilo? Deixe o link ou envie o vídeo:</label>
+      <input type="text" id="referencia" name="referencia" placeholder="https://..." />
+      <input type="file" id="arquivo" name="arquivo"/>
+
+      <label for="duvida">Precisa tirar alguma dúvida ou quer saber de algo? Escreva aqui e me envie:</label>
+      <textarea id="duvida" name="duvida" rows="3"></textarea>
+
+      <button type="submit">Enviar formulário</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarFormulario() {
+      const tipo = document.getElementById("tipoVideo").value;
+      const duracao = document.getElementById("duracao").value;
+      const referencia = document.getElementById("referencia").value;
+      const duvida = document.getElementById("duvida").value;
+      const profissao = document.getElementById("profissao").value;
+
+      const mensagem = `Olá! Gostaria de editar um vídeo.\n\nProfissão: ${profissao}\nTipo: ${tipo}\nDuração: ${duracao}\nReferência: ${referencia}\nDúvida ou observação: ${duvida}`;
+      const telefone = '5517992192532';
+      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
